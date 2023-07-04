@@ -47,7 +47,7 @@ func deleteEntry(key string) error {
 	// Update the index - key does not exist any more
 	// delete(index, key)
 
-	err := saveJSONFile(JSONFILE)
+	err := saveJsonDataFile(JSONFILE, &data)
 	if err != nil {
 		return err
 	}

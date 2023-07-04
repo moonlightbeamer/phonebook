@@ -1,10 +1,10 @@
 /*
-Copyright © 2021 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
+Copyright © 2023 Lin Zhu <moonlightbeamer@ymail.com>
 
 */
 package main
 
-import "github.com/mactsouk/phonebook/cmd"
+import "phonebook/cmd"
 
 func main() {
 	cmd.Execute()

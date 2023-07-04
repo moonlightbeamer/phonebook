@@ -72,7 +72,7 @@ func insert(pS *Entry) error {
 	data = append(data, *pS)
 
 	// Save the data
-	err := saveJSONFile(JSONFILE)
+	err := saveJsonDataFile(JSONFILE, &data)
 	if err != nil {
 		return err
 	}

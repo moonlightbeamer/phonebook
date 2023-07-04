@@ -19,14 +19,14 @@ var listCmd = &cobra.Command{
 	Short: "list all entries",
 	Long:  `This command lists all entries in the phone book application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		list()
+		list(&data)
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(listCmd)
 }
-
+/*
 // Implement sort.Interface
 func (a PhoneBook) Len() int {
 	return len(a)
@@ -44,25 +44,25 @@ func (a PhoneBook) Less(i, j int) bool {
 func (a PhoneBook) Swap(i, j int) {
 	a[i], a[j] = a[j], a[i]
 }
-
-func list() {
-	sort.Sort(PhoneBook(data))
-	text, err := PrettyPrintJSONstream(data)
+*/
+func list(d *PhoneBook) {
+	sort.Sort(*d)
+	text, err := PrettyPrintJSONstream(*d)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(text)
-	fmt.Printf("%d records in total.\n", len(data))
+	fmt.Printf("%d records in total.\n", len(*d))
 }
 
 // PrettyPrintJSONstream pretty prints the contents of the phone book
-func PrettyPrintJSONstream(data interface{}) (string, error) {
+func PrettyPrintJSONstream(dat interface{}) (string, error) {
 	buffer := new(bytes.Buffer)
 	encoder := json.NewEncoder(buffer)
 	encoder.SetIndent("", "\t")
 
-	err := encoder.Encode(data)
+	err := encoder.Encode(dat)
 	if err != nil {
 		return "", err
 	}
